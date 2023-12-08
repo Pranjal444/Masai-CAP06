@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranjal Pagar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+     
+    }
+    h1{
+        justify-content: center;
+    }
+    #main>div {
+      /* width: 10%; */
+      max-width: 800px;
+      margin: auto;
+      margin-top: 30px;
+     
+
+    }
+
+    #main>div>img {
+      width: 100%;
+      border: 2px solid black;
+    }
+
+    #nxtprv {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #nxt,
+    #prev,
+    #startpause {
+      font-size: 50px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    #nxt:hover,
+    #prev:hover,
+    #startpause:hover {
+      background-color: gray;
+    }
+
+    #nxt:active,
+    #prev:active,
+    #startpause:active {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div>
+        <h1>Pranjal's Silde Show</h1>
+      <img id="imgAdd"
+        src="https://tse3.mm.bing.net/th?id=OIP.D_YasPTuu5f4wSxj2XMJrgHaDL&pid=Api&P=0&h=180=500"
+        alt="">
+      <div id="nxtprv">
+        <div><button id="prev">❮</button></div>
+        <div><button id="startpause">▶</button></div>
+        <div><button id="nxt">❯</button></div>
+      </div>
+    </div>
+  </div>
+
+
+  <script >
+    let imgList = [
+    "https://1.bp.blogspot.com/-krCpKlVr3Sc/WMoEvaJMK9I/AAAAAAAAHIE/2iB4ueLMxj0b5YTuLRosD9JX6eEOFOdgwCLcB/s1600/Hindi%2BBhagavad%2BGita%2BQuotes%2Bhd%2Bwallpapers-brainyTeluguQuotes.jpg=500",
+    "https://1.bp.blogspot.com/-Q92PJ7wAZAI/XfJvBkorMwI/AAAAAAAAFkE/IqvgSZl7eAkzgdfYH89l5Q6mbxqXgv4LwCLcBGAsYHQ/s1600/bhagavad%2Bgita%2Bhindi%2Bmotivational%2Bspeeches%2Bwith%2Bhd%2Bwallpapers-brainyteluguquotes%2Bv.jpg=500",
+    "https://1.bp.blogspot.com/-JZiFjjeCkcc/XfJvB_qAsDI/AAAAAAAAFkI/heMXFqvECs07DIDftoTwrWcOrbebourTgCLcBGAsYHQ/s1600/bhagavad%2Bgita%2Binspiring%2Bwords%2Bin%2Bhindi-brainyteluguquotes.jpg=500",
+    "https://i.pinimg.com/originals/11/bf/70/11bf7046fe77797f617f4fa1b4a7bbf5.jpg=500",
+    "https://i1.wp.com/picsdownloadz.com/wp-content/uploads/2015/09/hqdefault1.jpg=500",
+    "https://1.bp.blogspot.com/-D0BHTs1rx4Y/Xdqk7MuT5CI/AAAAAAAAUYs/gSrAjQloKmwVigvhVaxaHeAKVTSoNdItACLcBGAsYHQ/w1200-h630-p-k-no-nu/shreemad-bhagawad-geeta-quotes.jpg=500",
+    "https://hindionlinejankari.com/wp-content/uploads/2020/03/20200317111634-e1624343118565.jpg=500",
+    "https://3.bp.blogspot.com/-dkEXTfPpJJU/W20jKaIYVUI/AAAAAAAABiA/lI1YeN9kUGoncm4VLz9641sec37Ea9cEQCLcBGAs/w1200-h630-p-k-no-nu/Geeta%2Bquotes%2Bin%2BHindi.jpg=500",
+    "https://i2.wp.com/www.justwebworld.com/wp-content/uploads/2016/07/geeta-quotes-sanskrit.jpg?resize=640%2C400&ssl=1=500",
+
+  ];
+
+  let imgAdd = document.getElementById("imgAdd");
+  let prev = document.getElementById("prev");
+  let startpause = document.getElementById("startpause");
+  let nxt = document.getElementById("nxt");
+  let count = 0;
+  let intervalID;
+
+  let slidingStart = false;
+
+  startpause.addEventListener("click", () => {
+    if (slidingStart == false) {
+      slidingStart = true;
+      startpause.innerText = "⏸";
+      intervalID = setInterval(() => {
+        count++;
+        if (count >= imgList.length) {
+          count = 0;
+        } else if (count < 0) {
+          count = imgList.length - 1;
+        };
+        imgAdd.src = imgList[count];
+        console.log(count);
+      }, 1000);
+    } else {
+      slidingStart = false;
+      startpause.innerText = "▶";
+      clearInterval(intervalID);
+    }
+  });
+
+
+  nxt.addEventListener("click", () => {
+    slidingStart = false;
+    startpause.innerText = "▶";
+    clearInterval(intervalID);
+    count++;
+    if (count >= imgList.length) {
+      count = 0;
+    } else if (count < 0) {
+      count = imgList.length - 1;
+    };
+    imgAdd.src = imgList[count];
+    console.log(count);
+
+  });
+
+  prev.addEventListener("click", () => {
+    slidingStart = false;
+    startpause.innerText = "▶";
+    clearInterval(intervalID);
+    count--;
+    if (count >= imgList.length) {
+      count = 0;
+    } else if (count < 0) {
+      count = imgList.length - 1;
+    };
+    imgAdd.src = imgList[count];
+    console.log(count);
+
+  });
+  </script>
+</body>
+
+</html>
