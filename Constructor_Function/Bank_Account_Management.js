@@ -1,70 +1,91 @@
-// Bank Account Constructor function
+// Create a constructor function called BankAccount
 function BankAccount(accountNumber, name, type, balance) {
+    // Initializing properties inside the constructor
     this.accountNumber = accountNumber;
     this.name = name;
     this.type = type;
     this.balance = balance;
     this.active = true;
 
-    // Inside the constructor, initialize the properties of the bank account object.
-    // Method to deposit money into the account
+    // Method to deposit the specified amount into the account
     this.deposit = function (amount) {
         this.balance += amount;
-        return { totalbalance: this.balance, message: "Deposit successfully", depositamount: amount };
+        return {
+            message: "Amount Deposited Successfully!",
+            depositedAmount: amount,
+            totalBalance: this.balance,
+        };
     };
 
-    // Method to withdraw money from the account
+    // Method to withdraw the specified amount from the account if the balance is sufficient
     this.withdraw = function (amount) {
-        if (amount > 0 && amount <= this.balance) {
+        if (this.balance >= amount) {
             this.balance -= amount;
-            return { totalbalance: this.balance, message: "Withdrawal successfully", withdrawalamount: amount };
+            return {
+                message: "Amount Withdrawn Successfully",
+                withdrawnAmount: amount,
+                totalBalance: this.balance,
+            };
         } else {
-            return { totalbalance: this.balance, message: "You have Insufficient Balance", withdrawalamount: 0 };
+            return {
+                message: "Insufficient Balance, Please Check your Balance",
+                withdrawnAmount: amount,
+                totalBalance: this.balance,
+            };
         }
     };
 
-    // Method to check the account balance
+    // Method to print the account's balance
     this.checkBalance = function () {
-        return this.balance;
+        return {
+            message: "Your Available Balance Is",
+            totalBalance: this.balance,
+        };
     };
 
-    // Method to check if the account is active
+    // Method to check and return whether the account is active
     this.isActive = function () {
-        return this.active;
+        return {
+            message: this.active ? "This is an Active Account" : "This is an Inactive Account",
+            isActive: this.active,
+            totalBalance: this.balance,
+        };
     };
 }
 
-// Function to calculate total balance of all active accounts
+// Function to calculate and return the total balance of all active accounts
 function getTotalBalance(accounts) {
     let totalBalance = 0;
     for (const account of accounts) {
-        if (account.isActive()) {
+        if (account.isActive().isActive) {
             totalBalance += account.balance;
         }
     }
     return totalBalance;
 }
 
-// Creating multiple BankAccount objects
-const account1 = new BankAccount(1, 'Sonal Pagar', 'Savings', 1000);
-const account2 = new BankAccount(2, 'Akash Solanki', 'Checking', 500);
+// Creating multiple bank accounts objects
+const acc1 = new BankAccount(101, "Pranjal Pagar", "Saving Account", 3000);
+const acc2 = new BankAccount(102, "Sonal Pagar", "Current Account", 3900);
 
-// Perform deposit, withdrawal, and balance check operations
-account1.deposit(500);
-console.log(account1.checkBalance());
-account1.withdraw(200);
-console.log(account1.checkBalance());
+// Performing actions on the accounts
+console.log(acc1.deposit(300));
+console.log(acc1.withdraw(900));
+console.log(acc2.checkBalance());
 
-account2.deposit(100);
-console.log(account2.checkBalance());
-account2.withdraw(50);
-console.log(account2.checkBalance());
+// Testing isActive method
+console.log(acc1.isActive());
 
-// Test isActive method
-console.log(`Account 1 is active: ${account1.isActive()}`);
-console.log(`Account 2 is active: ${account2.isActive()}`);
+// Deactivating account 1
+acc1.active = false;
 
-// Test getTotalBalance function
-const allAccounts = [account1, account2];
-const totalBalance = getTotalBalance(allAccounts);
-console.log(`Total balance of all active accounts: ${totalBalance}`);
+// Checking total balance
+const totalBalance = getTotalBalance([acc1, acc2]);
+console.log("Total Balance of Active Account 1 is:", totalBalance);
+
+// Activating account 1 again
+acc1.active = true;
+
+// Checking total balance again
+const finalTotalBalance = getTotalBalance([acc1, acc2]);
+console.log("Total Balance of Active Accounts:", finalTotalBalance);
