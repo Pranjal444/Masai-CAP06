@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body{
+        text-align: center;
+        border:2px solid lightgreen;
+        }
+        button{
+            border: 2px solid lightblue;
+            color: lightblue;
+            background-color: green;
+            font-size: 25px;
+            cursor: progress;
+        }
+    </style>
+    <title>OddEven App</title>
+</head>
+<body>
+<h1>ODDEVEN App-By Pranjal Pagar</h1>
+    <button id="generate-number">Generate Number</button>
+    <div id="number"></div>
+    <div id="odd-even"></div>
+
+    <script src="./src/oddEven.js"></script>
+    <script>
+        // Get the button and div elements
+        var generateButton = document.getElementById('generate-number');
+        var numberDiv = document.getElementById('number');
+        var oddEvenDiv = document.getElementById('odd-even');
+
+        // Add event listener to the button
+        generateButton.addEventListener('click', function () {
+            // Generate a random number
+            var randomNumber = generateNumber();
+
+            // Display the random number
+            numberDiv.innerText = 'Random Number: ' + randomNumber;
+
+            // Check if the number is odd or even
+            var result = checkOddEven(randomNumber);
+
+            // Display the result
+            oddEvenDiv.innerText = 'Result: ' + result;
+        });
+    </script>
+</body>
+</html>
