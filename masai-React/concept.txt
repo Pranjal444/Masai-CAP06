@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1.What is React?
 React, also known as React.js or ReactJS, is an open-source JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React is often used for building single-page applications (SPAs) where the user interacts with the page without the need for a full page reload.
 
@@ -90,3 +91,97 @@ Ex- const element = React.createElement('div', { className 'my-class' }, 'Hello,
 Render In React, render refers to the process of creating a virtual representation of the UI based on the current state and props of a component. The render method in a React component is responsible for returning the JSX (JavaScript XML) that describes the structure of the UI. When the state or props of a component change, the render method is called again to generate a new virtual representation of the UI, and React efficiently updates the actual DOM to reflect these changes.
 
 Root The root in React typically refers to the root DOM node where React application is mounted. When create a React application use the ReactDOM.render() method to render root component into a specific DOM element, creating the root of React component tree. The root DOM element is where React will start rendering entire application.
+=======
+1.What is React?
+React, also known as React.js or ReactJS, is an open-source JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React is often used for building single-page applications (SPAs) where the user interacts with the page without the need for a full page reload.
+
+2.Who made React?
+React, a JavaScript library for building user interfaces, was developed by Facebook. It was initially created by Jordan Walke, a software engineer at Facebook, and was first deployed on Facebook's newsfeed in 2011. React has since gained widespread adoption and is maintained by Facebook along with contributions from the open-source community.
+
+3.What is Babel?
+In the context of React and JavaScript development, Babel is often used as a transpiler. Babel allows developers to write code using the latest ECMAScript (JavaScript) features and syntax, and then transforms that code into an older version of JavaScript that is compatible with a wide range of browsers and environments.
+
+React, a JavaScript library for building user interfaces, often leverages the latest ECMAScript features. However, not all browsers or environments support these features, so using a tool like Babel becomes essential for ensuring cross-browser compatibility.
+
+Developers typically set up Babel in their React projects to transpile JSX (a syntax extension for JavaScript often used with React) and modern JavaScript syntax into a version that can be understood by older browsers. This allows them to take advantage of the latest language features without worrying about compatibility issues.
+
+4.How does Babel convert html code in React into valid code
+When it comes to React, JSX is a syntax extension that allows to write HTML-like code within JavaScript files. JSX code, however, cannot be directly interpreted by browsers, as they expect plain JavaScript. Babel, therefore, comes into play to transform JSX into standard JavaScript.
+
+Here's a simplified overview of the process
+
+Parsing Babel parses the JSX code into an Abstract Syntax Tree (AST). An AST is a hierarchical representation of the code's structure.
+
+Transformation Babel applies a set of transformations to the AST. One of the key transformations for React is converting JSX elements into React.createElement calls. This is necessary because browsers don't understand JSX directly.
+
+For example, Babel will transform this JSX code
+
+jsx
+
+Hello, World!
+into something like
+javascript
+
+React.createElement('div', { className 'example' }, 'Hello, World!'); Code Generation The transformed AST is then used to generate the final JavaScript code, which is what gets executed by the browser or other JavaScript environments.
+
+Output The generated JavaScript code, free from JSX syntax, can now be executed by browsers.
+
+5.What is ReactDOM used for Write an example
+ReactDOM is a JavaScript library that is part of the React ecosystem. It is specifically used for interacting with the DOM (Document Object Model) in web applications built with React. React itself is a declarative, efficient, and flexible JavaScript library for building user interfaces.
+
+ReactDOM provides methods for rendering React elements to the DOM, updating the DOM to reflect changes in the React components, and managing the lifecycle of these components. It serves as the bridge between the virtual DOM (an in-memory representation of the actual DOM) and the browser's DOM.
+
+6.What are the packages that need to import for react to work with
+To work with React need to import several packages, including React itself, ReactDOM for rendering components in the browser, and possibly other dependencies for managing state, handling routing, making API calls, etc. Here's a basic list of packages commonly used in a React application
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import axios from 'axios';
+import styled from 'styled-components';
+
+7.How do add react to a web application
+To add React to a web application, follow these steps
+
+Setup Development Environment Make sure to have Node.js and npm (Node Package Manager) installed on system.
+
+Create a New React App Open terminal and run the following command to create a new React app using Create React App, a popular tool to set up a new React project npx create-react-app my-react-app
+
+Navigate to Project Move into the newly created project directory cd my-react-app.
+
+Start the Development Server Start the development server to see React app in action npm start
+
+8.What is React.createElement
+React.createElement is a function in React, a popular JavaScript library for building user interfaces. It is used to create React elements, which are the building blocks of React applications. The typical syntax for React.createElement is as follows
+
+React.createElement(type, [props], [...children])
+
+type This can be a string representing an HTML tag (e.g., 'div', 'span') for creating native HTML elements, or it can be a reference to a React component. When using a React component pass the component itself as the type.
+
+props An object containing properties (or attributes) for the element or component. It can be null if no properties are needed.
+
+children Additional arguments representing the children of the element or component. This can include nested React.createElement calls, strings, numbers, or other valid React elements.
+
+9.What are the three properties that createElement accept
+In React, the createElement function is used to create React elements, which are the building blocks of React applications. The createElement function takes three main properties
+
+Type (or Element Type)
+This is a required parameter that specifies the type of the React element to be created. It can be a string representing an HTML tag name (e.g., 'div', 'span', 'h1') or a reference to a React component (e.g., MyComponent).
+
+Props (or Properties)
+This is an optional parameter that represents the properties or attributes want to assign to the React element. It is an object containing key-value pairs where keys are the property names, and values are the property values.
+
+Children
+
+This parameter represents the content or children of the React element. It can be a single child element, an array of child elements, or text content. Children are what will be rendered inside the parent element.
+
+Ex- const element = React.createElement('div', { className 'my-class' }, 'Hello, React!');
+
+10.What is the meaning of render and root
+
+Render In React, render refers to the process of creating a virtual representation of the UI based on the current state and props of a component. The render method in a React component is responsible for returning the JSX (JavaScript XML) that describes the structure of the UI. When the state or props of a component change, the render method is called again to generate a new virtual representation of the UI, and React efficiently updates the actual DOM to reflect these changes.
+
+Root The root in React typically refers to the root DOM node where React application is mounted. When create a React application use the ReactDOM.render() method to render root component into a specific DOM element, creating the root of React component tree. The root DOM element is where React will start rendering entire application.
+>>>>>>> f8b8230972ba45803ed4da93058c1b0db35a7186
